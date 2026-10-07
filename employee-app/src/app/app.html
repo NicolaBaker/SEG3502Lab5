@@ -1,0 +1,57 @@
+<div class="container">
+
+  <h1>Employee Information</h1>
+
+  <div class="form">
+
+    <label>First Name</label>
+    <input type="text" [(ngModel)]="employee.firstName" name="firstName">
+
+    <label>Last Name</label>
+    <input type="text" [(ngModel)]="employee.lastName" name="lastName">
+
+    <label>Email</label>
+    <input type="email" [(ngModel)]="employee.email" name="email">
+
+    <label>Position</label>
+    <input type="text" [(ngModel)]="employee.position" name="position">
+
+    <button (click)="saveEmployee()"> Save Employee</button>
+
+    <button (click)="employeeList()">Employee List</button>
+
+    @if (message) {
+      <p>{{ message }}</p>
+    }
+
+  </div>
+
+
+  @if (showList) {
+
+    <h2>Employee List</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Position</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (employee of employees; track employee.id) {
+          <tr>
+            <td>{{ employee.firstName }}</td>
+            <td>{{ employee.lastName }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.position }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+
+</div>
